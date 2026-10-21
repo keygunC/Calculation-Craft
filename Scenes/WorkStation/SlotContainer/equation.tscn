@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://drce5pfyghfv3"]
+
+[ext_resource type="Script" uid="uid://um41yh72ml35" path="res://Scenes/WorkStation/SlotContainer/equation.gd" id="1_p6dj8"]
+[ext_resource type="PackedScene" uid="uid://brxfxu4wfp5e0" path="res://Scenes/WorkStation/slot.tscn" id="1_qmv2a"]
+
+[node name="Equation" type="Node2D" unique_id=242510466]
+script = ExtResource("1_p6dj8")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1867677996]
+offset_right = 668.0
+offset_bottom = 156.0
+
+[node name="Argument1" parent="." unique_id=298262605 instance=ExtResource("1_qmv2a")]
+position = Vector2(75, 77)
+accepts = Array[int]([1])
+
+[node name="Operator" parent="." unique_id=1872323174 instance=ExtResource("1_qmv2a")]
+position = Vector2(201, 77)
+accepts = Array[int]([2])
+
+[node name="Argument2" parent="." unique_id=2108073237 instance=ExtResource("1_qmv2a")]
+position = Vector2(331, 77)
+accepts = Array[int]([1])
+
+[node name="Equals" type="Button" parent="." unique_id=66584381]
+offset_left = 409.0
+offset_top = 28.0
+offset_right = 509.0
+offset_bottom = 128.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme_override_font_sizes/font_size = 64
+text = "="
+
+[node name="Result" parent="." unique_id=26370450 instance=ExtResource("1_qmv2a")]
+position = Vector2(586, 77)
+accepts = Array[int]([])
+
+[connection signal="pressed" from="Equals" to="." method="_on_equals_pressed"]

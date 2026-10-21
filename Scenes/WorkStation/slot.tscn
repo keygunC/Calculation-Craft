@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://brxfxu4wfp5e0"]
+
+[ext_resource type="Script" uid="uid://c6bhjvjemhcdl" path="res://Scenes/WorkStation/slot.gd" id="1_luhj6"]
+[ext_resource type="Script" uid="uid://nlq20vr4efr4" path="res://Scenes/WorkStation/label_slot.gd" id="2_12ej0"]
+
+[node name="Slot" type="Node2D" unique_id=298262605]
+script = ExtResource("1_luhj6")
+
+[node name="Button" type="Button" parent="." unique_id=2098488236]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LabelSlot" type="Label" parent="." unique_id=1635599050]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 64
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2_12ej0")
+
+[node name="SelectionNode" type="Node2D" parent="." unique_id=1570792488]
+unique_name_in_owner = true
+visible = false
+
+[node name="Polygon2D" type="Polygon2D" parent="SelectionNode" unique_id=2105937209]
+position = Vector2(1, -1)
+polygon = PackedVector2Array(-46, -59, -41, -39, -61, -44)
+
+[node name="Polygon2D2" type="Polygon2D" parent="SelectionNode" unique_id=1099923611]
+position = Vector2(99, 1)
+polygon = PackedVector2Array(-54, -60, -39, -46, -59, -41)
+
+[node name="Polygon2D3" type="Polygon2D" parent="SelectionNode" unique_id=1065679167]
+position = Vector2(2, 97)
+polygon = PackedVector2Array(-62, -52, -42, -57, -47, -37)
+
+[node name="Polygon2D4" type="Polygon2D" parent="SelectionNode" unique_id=152557761]
+position = Vector2(104, 93)
+polygon = PackedVector2Array(-64, -53, -44, -48, -59, -33)
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

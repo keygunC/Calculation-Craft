@@ -1,0 +1,25 @@
+[gd_scene format=4 uid="uid://ctpj4hdgfbmu2"]
+
+[ext_resource type="Script" uid="uid://dhrvs5yasayc7" path="res://Scenes/WorkStation/SlotContainer/inventory.gd" id="1_nx3oi"]
+[ext_resource type="PackedScene" uid="uid://brxfxu4wfp5e0" path="res://Scenes/WorkStation/slot.tscn" id="2_gknvy"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_jjvhh"]
+resource_name = "Slot"
+scenes/1/scene = ExtResource("2_gknvy")
+
+[sub_resource type="TileSet" id="TileSet_0xm2m"]
+tile_size = Vector2i(128, 128)
+sources/0 = SubResource("TileSetScenesCollectionSource_jjvhh")
+
+[node name="Inventory" type="Node2D" unique_id=1213023267]
+script = ExtResource("1_nx3oi")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=581337266]
+offset_right = 668.0
+offset_bottom = 412.0
+color = Color(0.39215687, 0.39215687, 0.39215687, 1)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=693174208]
+position = Vector2(13, 14)
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAQABAAAAAAAAAAAAAQACAAAAAAAAAAAAAQADAAAAAAAAAAAAAQAEAAAAAAAAAAAAAQAAAAEAAAAAAAAAAQABAAEAAAAAAAAAAQACAAEAAAAAAAAAAQADAAEAAAAAAAAAAQAEAAEAAAAAAAAAAQAAAAIAAAAAAAAAAQABAAIAAAAAAAAAAQACAAIAAAAAAAAAAQADAAIAAAAAAAAAAQAEAAIAAAAAAAAAAQA=")
+tile_set = SubResource("TileSet_0xm2m")

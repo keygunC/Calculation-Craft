@@ -1,0 +1,106 @@
+[gd_scene format=4 uid="uid://cb1bfwyvhkiu7"]
+
+[ext_resource type="Script" uid="uid://ce0rvwur0t2la" path="res://Scenes/main.gd" id="1_8gbba"]
+[ext_resource type="Texture2D" uid="uid://cmo3p8x3it7i" path="res://Assets/Bellady_logo.png" id="1_bo1nx"]
+[ext_resource type="PackedScene" uid="uid://brxfxu4wfp5e0" path="res://Scenes/slot.tscn" id="2_8gbba"]
+[ext_resource type="Script" uid="uid://dhrvs5yasayc7" path="res://Scenes/inventory.gd" id="3_jjvhh"]
+[ext_resource type="Script" uid="uid://j04jgqohyffi" path="res://Scenes/equals.gd" id="5_kry3j"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_jjvhh"]
+resource_name = "Slot"
+scenes/1/scene = ExtResource("2_8gbba")
+
+[sub_resource type="TileSet" id="TileSet_0xm2m"]
+tile_size = Vector2i(128, 128)
+sources/0 = SubResource("TileSetScenesCollectionSource_jjvhh")
+
+[node name="Main" type="Node2D" unique_id=1960865619]
+script = ExtResource("1_8gbba")
+
+[node name="BelladyLogo" type="Sprite2D" parent="." unique_id=807709970]
+position = Vector2(261, 335)
+scale = Vector2(4, 4)
+texture = ExtResource("1_bo1nx")
+
+[node name="Sidebar" type="Node2D" parent="." unique_id=888825279]
+
+[node name="ColorRect" type="ColorRect" parent="Sidebar" unique_id=2011421536]
+offset_left = 520.0
+offset_right = 720.0
+offset_bottom = 640.0
+color = Color(0.5176471, 0.5176471, 0, 1)
+
+[node name="Reset" type="Button" parent="Sidebar" unique_id=279638278]
+offset_left = 570.0
+offset_top = 514.0
+offset_right = 670.0
+offset_bottom = 614.0
+text = "RESET"
+
+[node name="LabelScore" type="Label" parent="Sidebar" unique_id=372736420]
+offset_left = 571.0
+offset_top = 272.0
+offset_right = 671.0
+offset_bottom = 372.0
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="Sidebar" unique_id=1733217204]
+offset_left = 571.0
+offset_top = 34.0
+offset_right = 671.0
+offset_bottom = 134.0
+text = "MENU
+"
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1757243687]
+offset_top = 640.0
+offset_right = 720.0
+offset_bottom = 1280.0
+color = Color(0.19394687, 0.19394687, 0, 1)
+
+[node name="Inventory" type="Node2D" parent="." unique_id=1845861555]
+script = ExtResource("3_jjvhh")
+
+[node name="ColorRect" type="ColorRect" parent="Inventory" unique_id=1014377436]
+offset_left = 27.0
+offset_top = 671.0
+offset_right = 697.0
+offset_bottom = 1079.0
+color = Color(0.409283, 0.409283, 0.409283, 1)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Inventory" unique_id=655196672]
+position = Vector2(40, 680)
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAQABAAAAAAAAAAAAAQACAAAAAAAAAAAAAQADAAAAAAAAAAAAAQAEAAAAAAAAAAAAAQAAAAEAAAAAAAAAAQABAAEAAAAAAAAAAQACAAEAAAAAAAAAAQADAAEAAAAAAAAAAQAEAAEAAAAAAAAAAQAAAAIAAAAAAAAAAQABAAIAAAAAAAAAAQACAAIAAAAAAAAAAQADAAIAAAAAAAAAAQAEAAIAAAAAAAAAAQA=")
+tile_set = SubResource("TileSet_0xm2m")
+
+[node name="Equation" type="Node" parent="." unique_id=79050546]
+
+[node name="Argument1" parent="Equation" unique_id=779356800 instance=ExtResource("2_8gbba")]
+position = Vector2(104, 1170)
+accepts = Array[int]([1])
+
+[node name="Operator" parent="Equation" unique_id=365837283 instance=ExtResource("2_8gbba")]
+position = Vector2(230, 1170)
+accepts = Array[int]([2])
+
+[node name="Argument2" parent="Equation" unique_id=298262605 instance=ExtResource("2_8gbba")]
+position = Vector2(360, 1170)
+accepts = Array[int]([1])
+
+[node name="Equals" type="Button" parent="Equation" unique_id=1499301005]
+offset_left = 438.0
+offset_top = 1121.0
+offset_right = 538.0
+offset_bottom = 1221.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme_override_font_sizes/font_size = 64
+text = "="
+script = ExtResource("5_kry3j")
+
+[node name="Result" parent="Equation" unique_id=2030625911 instance=ExtResource("2_8gbba")]
+position = Vector2(615, 1170)
+accepts = Array[int]([])
+
+[connection signal="pressed" from="Equation/Equals" to="Equation/Equals" method="_on_pressed"]

@@ -1,0 +1,161 @@
+[gd_scene format=3 uid="uid://bmsgh3xaeu24a"]
+
+[ext_resource type="Script" uid="uid://des3poov6dd5u" path="res://Scenes/GameMode/Roguelike/roguelike.gd" id="1_acr8e"]
+[ext_resource type="Script" uid="uid://bcl86ui4gxyht" path="res://Scenes/GameMode/Roguelike/Component/health_component.gd" id="2_a615j"]
+[ext_resource type="Script" uid="uid://b1pgv8ypp10e0" path="res://Scenes/GameMode/Roguelike/enemy_space.gd" id="3_a615j"]
+[ext_resource type="Script" uid="uid://cg4v2r8afx6jo" path="res://Scenes/WorkStation/work_station.gd" id="3_j1wl8"]
+[ext_resource type="PackedScene" uid="uid://ctpj4hdgfbmu2" path="res://Scenes/WorkStation/SlotContainer/inventory.tscn" id="4_rwoou"]
+[ext_resource type="Script" uid="uid://snrx80ljnquy" path="res://Scenes/WorkStation/SlotContainer/tools.gd" id="5_u15pc"]
+[ext_resource type="PackedScene" uid="uid://drce5pfyghfv3" path="res://Scenes/WorkStation/SlotContainer/equation.tscn" id="6_m6hy2"]
+[ext_resource type="PackedScene" uid="uid://bkum4a2t0tvx" path="res://Scenes/WorkStation/SlotContainer/cloner.tscn" id="7_s24ng"]
+[ext_resource type="PackedScene" uid="uid://ddbwr5igwxw1h" path="res://Scenes/WorkStation/SlotContainer/splitter.tscn" id="9_j1wl8"]
+
+[node name="Roguelike" type="Node2D" unique_id=380155537 node_paths=PackedStringArray("health")]
+script = ExtResource("1_acr8e")
+health = NodePath("HealthComponent")
+
+[node name="HealthComponent" type="Node" parent="." unique_id=1931851873]
+unique_name_in_owner = true
+script = ExtResource("2_a615j")
+
+[node name="Sidebar" type="Node2D" parent="." unique_id=1289965653]
+
+[node name="ColorRect" type="ColorRect" parent="Sidebar" unique_id=1357180026]
+offset_right = 720.0
+offset_bottom = 140.0
+color = Color(0, 0, 0.19607843, 1)
+
+[node name="LabelHealth" type="Label" parent="Sidebar" unique_id=424018068]
+unique_name_in_owner = true
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 130.0
+offset_bottom = 120.0
+theme_override_font_sizes/font_size = 64
+text = "100"
+
+[node name="ButtonMenu" type="Button" parent="Sidebar" unique_id=272815103]
+offset_left = 600.0
+offset_top = 20.0
+offset_right = 700.0
+offset_bottom = 120.0
+theme_override_font_sizes/font_size = 24
+text = "MENU
+"
+
+[node name="EnemySpace" type="Node2D" parent="." unique_id=1608761160]
+unique_name_in_owner = true
+script = ExtResource("3_a615j")
+
+[node name="ResultScreen" type="Node2D" parent="EnemySpace" unique_id=670030028]
+unique_name_in_owner = true
+visible = false
+
+[node name="LabelResult" type="Label" parent="EnemySpace/ResultScreen" unique_id=133041766]
+offset_top = 250.0
+offset_right = 720.0
+offset_bottom = 382.0
+theme_override_font_sizes/font_size = 64
+text = "Victory!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonNext" type="Button" parent="EnemySpace/ResultScreen" unique_id=179667671]
+offset_left = 211.0
+offset_top = 399.0
+offset_right = 511.0
+offset_bottom = 463.0
+theme_override_font_sizes/font_size = 32
+text = "Next"
+
+[node name="WorkStation" type="Node2D" parent="." unique_id=1464809599]
+unique_name_in_owner = true
+script = ExtResource("3_j1wl8")
+
+[node name="ColorRect" type="ColorRect" parent="WorkStation" unique_id=1590577682]
+offset_top = 640.0
+offset_right = 720.0
+offset_bottom = 1280.0
+color = Color(0, 0, 0.39215687, 1)
+
+[node name="Inventory" parent="WorkStation" unique_id=1213023267 instance=ExtResource("4_rwoou")]
+unique_name_in_owner = true
+position = Vector2(26, 842)
+
+[node name="Tools" type="Node2D" parent="WorkStation" unique_id=331342140]
+unique_name_in_owner = true
+script = ExtResource("5_u15pc")
+
+[node name="Equation" parent="WorkStation/Tools" unique_id=242510466 instance=ExtResource("6_m6hy2")]
+unique_name_in_owner = true
+position = Vector2(26, 666)
+
+[node name="Cloner" parent="WorkStation/Tools" unique_id=52774024 instance=ExtResource("7_s24ng")]
+unique_name_in_owner = true
+visible = false
+position = Vector2(26, 666)
+
+[node name="Splitter" parent="WorkStation/Tools" unique_id=615560552 instance=ExtResource("9_j1wl8")]
+unique_name_in_owner = true
+visible = false
+position = Vector2(26, 666)
+
+[node name="WorkButtons" type="Node2D" parent="WorkStation" unique_id=1185152907]
+unique_name_in_owner = true
+
+[node name="ColorRect2" type="ColorRect" parent="WorkStation/WorkButtons" unique_id=1501802341]
+offset_top = 500.0
+offset_right = 720.0
+offset_bottom = 640.0
+color = Color(0, 0, 0.5882353, 1)
+
+[node name="ButtonEquation" type="Button" parent="WorkStation/WorkButtons" unique_id=461117616]
+offset_left = 20.0
+offset_top = 520.0
+offset_right = 120.0
+offset_bottom = 620.0
+theme_override_font_sizes/font_size = 24
+text = "EQUAL"
+metadata/_edit_use_anchors_ = true
+
+[node name="ButtonCloner" type="Button" parent="WorkStation/WorkButtons" unique_id=1524758929]
+offset_left = 140.0
+offset_top = 520.0
+offset_right = 240.0
+offset_bottom = 620.0
+theme_override_font_sizes/font_size = 24
+text = "CLONE"
+
+[node name="ButtonSplitter" type="Button" parent="WorkStation/WorkButtons" unique_id=1491905585]
+offset_left = 260.0
+offset_top = 520.0
+offset_right = 360.0
+offset_bottom = 620.0
+theme_override_font_sizes/font_size = 24
+text = "SPLIT"
+
+[node name="ColorRect2" type="ColorRect" parent="WorkStation" unique_id=1032653410]
+offset_left = 580.0
+offset_top = 500.0
+offset_right = 720.0
+offset_bottom = 640.0
+color = Color(0, 0, 0.5882353, 1)
+
+[node name="ButtonWorkToggle" type="Button" parent="WorkStation" unique_id=280627687]
+unique_name_in_owner = true
+offset_left = 600.0
+offset_top = 520.0
+offset_right = 700.0
+offset_bottom = 620.0
+theme_override_font_sizes/font_size = 64
+text = "V"
+
+[connection signal="signal_health_changed" from="HealthComponent" to="." method="_on_health_component_signal_health_changed"]
+[connection signal="pressed" from="Sidebar/ButtonMenu" to="." method="_on_button_menu_pressed"]
+[connection signal="signal_enemy_clicked" from="EnemySpace" to="." method="_on_enemy_space_signal_enemy_clicked"]
+[connection signal="signal_round_complete" from="EnemySpace" to="." method="_on_enemy_space_signal_round_complete"]
+[connection signal="pressed" from="EnemySpace/ResultScreen/ButtonNext" to="." method="_on_button_next_pressed"]
+[connection signal="pressed" from="WorkStation/WorkButtons/ButtonEquation" to="WorkStation/Tools" method="_on_button_equation_pressed"]
+[connection signal="pressed" from="WorkStation/WorkButtons/ButtonCloner" to="WorkStation/Tools" method="_on_button_cloner_pressed"]
+[connection signal="pressed" from="WorkStation/WorkButtons/ButtonSplitter" to="WorkStation/Tools" method="_on_button_splitter_pressed"]
+[connection signal="pressed" from="WorkStation/ButtonWorkToggle" to="." method="_on_button_work_toggle_pressed"]

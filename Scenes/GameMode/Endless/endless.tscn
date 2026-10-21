@@ -1,0 +1,122 @@
+[gd_scene format=3 uid="uid://cb1bfwyvhkiu7"]
+
+[ext_resource type="Script" uid="uid://ce0rvwur0t2la" path="res://Scenes/GameMode/Endless/endless.gd" id="1_ojxuo"]
+[ext_resource type="Texture2D" uid="uid://bvhenkoisqsn5" path="res://Assets/Customers/Customer1.png" id="2_nyxh7"]
+[ext_resource type="Script" uid="uid://bsrtcmf513roh" path="res://Scenes/GameMode/Endless/Customer/sprite_2d_customer.gd" id="3_jfh70"]
+[ext_resource type="Script" uid="uid://cr8y38y22rfbs" path="res://Scenes/GameMode/Endless/Customer/area_2d_customer.gd" id="4_6oxo8"]
+[ext_resource type="Texture2D" uid="uid://dqv1lmkkkd7dp" path="res://Assets/ChatBubble.png" id="5_xpxuu"]
+[ext_resource type="Script" uid="uid://cg4v2r8afx6jo" path="res://Scenes/WorkStation/work_station.gd" id="6_ojxuo"]
+[ext_resource type="PackedScene" uid="uid://ctpj4hdgfbmu2" path="res://Scenes/WorkStation/SlotContainer/inventory.tscn" id="6_w10n0"]
+[ext_resource type="PackedScene" uid="uid://drce5pfyghfv3" path="res://Scenes/WorkStation/SlotContainer/equation.tscn" id="7_ykven"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kry3j"]
+size = Vector2(520, 640)
+
+[node name="Endless" type="Node2D" unique_id=1960865619]
+script = ExtResource("1_ojxuo")
+
+[node name="Customer" type="Node2D" parent="." unique_id=460733091]
+
+[node name="Sprite2DCustomer" type="Sprite2D" parent="Customer" unique_id=807709970]
+unique_name_in_owner = true
+position = Vector2(291, 321)
+texture = ExtResource("2_nyxh7")
+script = ExtResource("3_jfh70")
+
+[node name="Area2DCustomer" type="Area2D" parent="Customer" unique_id=924912269]
+script = ExtResource("4_6oxo8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Customer/Area2DCustomer" unique_id=1256726067]
+visible = false
+position = Vector2(260, 320)
+shape = SubResource("RectangleShape2D_kry3j")
+
+[node name="Request" type="Node2D" parent="Customer" unique_id=247782296]
+
+[node name="ChatBubble" type="Sprite2D" parent="Customer/Request" unique_id=50428681]
+position = Vector2(440, 80)
+texture = ExtResource("5_xpxuu")
+
+[node name="LabelRequest" type="Label" parent="Customer/Request" unique_id=1022377821]
+unique_name_in_owner = true
+offset_left = 383.0
+offset_top = 26.0
+offset_right = 493.0
+offset_bottom = 126.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 64
+text = "123"
+horizontal_alignment = 1
+
+[node name="Sidebar" type="Node2D" parent="." unique_id=888825279]
+
+[node name="ColorRect" type="ColorRect" parent="Sidebar" unique_id=2011421536]
+offset_left = 580.0
+offset_right = 720.0
+offset_bottom = 640.0
+color = Color(0, 0.19607843, 0, 1)
+
+[node name="ButtonReset" type="Button" parent="Sidebar" unique_id=279638278]
+offset_left = 600.0
+offset_top = 520.0
+offset_right = 700.0
+offset_bottom = 620.0
+theme_override_font_sizes/font_size = 24
+text = "RESET"
+
+[node name="ButtonMenu" type="Button" parent="Sidebar" unique_id=1733217204]
+offset_left = 600.0
+offset_top = 20.0
+offset_right = 700.0
+offset_bottom = 120.0
+theme_override_font_sizes/font_size = 24
+text = "MENU
+"
+
+[node name="ButtonSolution" type="Button" parent="Sidebar" unique_id=1906713432]
+offset_left = 600.0
+offset_top = 270.0
+offset_right = 700.0
+offset_bottom = 370.0
+text = "Solution"
+
+[node name="LabelScore" type="Label" parent="Sidebar" unique_id=372736420]
+unique_name_in_owner = true
+offset_right = 100.0
+offset_bottom = 100.0
+theme_override_font_sizes/font_size = 64
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WorkStation" type="Node2D" parent="." unique_id=1246324079]
+unique_name_in_owner = true
+script = ExtResource("6_ojxuo")
+
+[node name="ColorRect" type="ColorRect" parent="WorkStation" unique_id=1757243687]
+offset_top = 640.0
+offset_right = 720.0
+offset_bottom = 1280.0
+color = Color(0, 0.39215687, 0, 1)
+
+[node name="Inventory" parent="WorkStation" unique_id=1213023267 instance=ExtResource("6_w10n0")]
+unique_name_in_owner = true
+position = Vector2(26, 842)
+
+[node name="Tools" type="Node2D" parent="WorkStation" unique_id=514606876]
+unique_name_in_owner = true
+
+[node name="Equation" parent="WorkStation/Tools" unique_id=242510466 instance=ExtResource("7_ykven")]
+unique_name_in_owner = true
+position = Vector2(26, 666)
+
+[node name="LoadingCover" type="Polygon2D" parent="." unique_id=1525661697]
+unique_name_in_owner = true
+visible = false
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(0, 0, 720, 0, 720, 1280, 0, 1280)
+
+[connection signal="customer_interact" from="Customer/Area2DCustomer" to="." method="_on_area_2d_customer_customer_interact"]
+[connection signal="pressed" from="Sidebar/ButtonReset" to="." method="_on_button_reset_pressed"]
+[connection signal="pressed" from="Sidebar/ButtonMenu" to="." method="_on_button_menu_pressed"]
+[connection signal="pressed" from="Sidebar/ButtonSolution" to="." method="_on_button_solution_pressed"]

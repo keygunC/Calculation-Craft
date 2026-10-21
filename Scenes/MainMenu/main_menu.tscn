@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://byvsufclq5s7r"]
+
+[ext_resource type="Script" uid="uid://uegulvycymey" path="res://Scenes/MainMenu/main_menu.gd" id="1_qgdf6"]
+
+[node name="MainMenu" type="Node2D" unique_id=1545077051]
+script = ExtResource("1_qgdf6")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1475905151]
+offset_top = 300.0
+offset_right = 720.0
+offset_bottom = 623.0
+color = Color(0.39215687, 0, 0, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1986696374]
+offset_top = 300.0
+offset_right = 720.0
+offset_bottom = 623.0
+
+[node name="Title" type="Label" parent="CenterContainer" unique_id=1858355264]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "CALCULATION
+CRAFT"
+horizontal_alignment = 1
+
+[node name="ButtonEndless" type="Button" parent="." unique_id=1402769700]
+offset_left = 140.0
+offset_top = 712.0
+offset_right = 572.0
+offset_bottom = 808.0
+theme_override_font_sizes/font_size = 64
+text = "Endless Mode"
+
+[node name="ButtonRoguelike" type="Button" parent="." unique_id=1411726734]
+offset_left = 106.0
+offset_top = 861.0
+offset_right = 607.0
+offset_bottom = 957.0
+theme_override_font_sizes/font_size = 64
+text = "Roguelike Mode
+"
+
+[connection signal="pressed" from="ButtonEndless" to="." method="_on_button_endless_pressed"]
+[connection signal="pressed" from="ButtonRoguelike" to="." method="_on_button_roguelike_pressed"]

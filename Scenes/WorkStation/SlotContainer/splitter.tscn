@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://ddbwr5igwxw1h"]
+
+[ext_resource type="Script" uid="uid://cly7bx2jmfwuq" path="res://Scenes/WorkStation/SlotContainer/splitter.gd" id="1_og452"]
+[ext_resource type="PackedScene" uid="uid://brxfxu4wfp5e0" path="res://Scenes/WorkStation/slot.tscn" id="2_sx7l7"]
+
+[node name="Splitter" type="Node2D" unique_id=615560552]
+script = ExtResource("1_og452")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=181168280]
+offset_right = 668.0
+offset_bottom = 156.0
+color = Color(1, 0, 0, 1)
+
+[node name="Argument" parent="." unique_id=298262605 instance=ExtResource("2_sx7l7")]
+position = Vector2(75, 77)
+accepts = Array[int]([1])
+
+[node name="ButtonSplit" type="Button" parent="." unique_id=1052078627]
+offset_left = 216.0
+offset_top = 27.0
+offset_right = 316.0
+offset_bottom = 127.0
+theme_override_font_sizes/font_size = 64
+text = "//"
+
+[node name="Result1" parent="." unique_id=968083280 instance=ExtResource("2_sx7l7")]
+position = Vector2(459, 77)
+accepts = Array[int]([])
+
+[node name="Result2" parent="." unique_id=1092132034 instance=ExtResource("2_sx7l7")]
+position = Vector2(586, 77)
+accepts = Array[int]([])
+
+[connection signal="pressed" from="ButtonSplit" to="." method="_on_button_split_pressed"]
